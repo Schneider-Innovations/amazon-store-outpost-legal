@@ -6,3 +6,6 @@ normal changes.
 
 The current revision was pushed after the public-repository runner-group policy
 was restricted to this protected workflow.
+
+The reusable receipt workflow is also explicitly allowlisted for this runner
+group.
