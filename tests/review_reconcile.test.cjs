@@ -60,11 +60,18 @@ async function scenario(options = {}) {
   const readyEvent = { id: 50, event: 'labeled', label: { name: label },
     actor: { login: options.unauthorizedRelabel ? 'other-user' : 'mercury1231' },
     created_at: options.unauthorizedRelabel ? '2026-09-23T09:03:00Z' : '2026-09-23T09:01:59Z' };
+  const readyHistory = options.sameSecondRelabel ? [
+    { id: 52, event: 'labeled', label: { name: label }, actor: { login: 'mercury1231' },
+      created_at: requestTime },
+    { id: 51, event: 'unlabeled', label: { name: label }, actor: { login: 'mercury1231' },
+      created_at: requestTime },
+    readyEvent,
+  ] : [readyEvent];
   const checksList = async () => {};
   const issueEvents = async () => {};
   const github = {
     paginate: async (method, args) => method === checksList
-      ? (args.ref === head ? headChecks : [marker]) : [readyEvent],
+      ? (args.ref === head ? headChecks : [marker]) : readyHistory,
     rest: {
       pulls: { get: async () => ({ data: pr }) },
       checks: { listForRef: checksList, update: async (args) => updates.push(args) },
@@ -104,5 +111,8 @@ async function scenario(options = {}) {
   const relabeled = await scenario({ unauthorizedRelabel: true });
   assert.deepEqual(relabeled.failures, ['AI_REVIEW_RECONCILE_LABEL_EVENT_CHANGED']);
   assert.equal(relabeled.updates.length, 0);
+  const sameSecond = await scenario({ sameSecondRelabel: true });
+  assert.deepEqual(sameSecond.failures, ['AI_REVIEW_RECONCILE_LABEL_EVENT_CHANGED']);
+  assert.equal(sameSecond.updates.length, 0);
   console.log('review reconciliation: prior marker accepted; later markers and re-label denied');
 })().catch((error) => { console.error(error); process.exitCode = 1; });
