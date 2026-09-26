@@ -26,6 +26,12 @@ jobs:
       # Public repositories cannot call the private reusable workflow. Their
       # protected-base local mirrors are admitted only by exact Git blob ID.
       # Bootstrap preserves older protected-base blobs until the final lifecycle PR proves the anchored parser.
+      # Release 81 adds blob b8f028a9d1d9bbac02ab1403e121a9a481fa162b for both
+      # repositories: snd-quality-gate 71676af rendered as the local mirror. Its
+      # complete change from the current mirror (e15f788) is
+      # tests/review-81-local-mirror.patch, and tests/verify_review_81_local_blob.py
+      # rebuilds it from the protected base and checks this exact blob ID.
+      # 71676af in APPROVED_REUSABLE_REFS below is the same reviewed revision.
       APPROVED_LOCAL_WORKFLOW_BLOBS: |
         Schneider-Innovations/amazon-store-outpost-legal=030b2c689195c2a092b3f1e8557d7b8b06adea93
         Schneider-Innovations/amazon-store-outpost-legal=0337ebe7b69dd26a95c43917fdb33732ab10a5b0
