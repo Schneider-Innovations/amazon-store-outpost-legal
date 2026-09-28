@@ -1,0 +1,68 @@
+name: Codex review receipt (retired)
+
+# RETIRED 2026-09-28. The Connector-compatible receipt lane accepted a
+# caller-supplied reviewer_login as the source of review evidence, published
+# ai-review/receipt and ran on GitHub-hosted runners. No protected-base caller
+# in this repository uses it; the caller runs the local CLI receipt mirror.
+#
+# This tombstone keeps the reusable interface so that any caller still naming
+# this path resolves and then fails closed with an explicit reason. It holds no
+# permissions, never reads the declared secret, and never creates, updates or
+# completes any Check or commit status. Callers pinned to older commits keep
+# the behaviour of those commits.
+on:
+  workflow_call:
+    inputs:
+      reviewer_login:
+        description: Retired; ignored.
+        required: false
+        type: string
+        default: chatgpt-codex-connector
+      trigger_login:
+        description: Retired; ignored.
+        required: true
+        type: string
+      timeout_seconds:
+        description: Retired; ignored.
+        required: false
+        type: number
+        default: 720
+      pr_number:
+        description: Retired; ignored.
+        required: false
+        type: number
+        default: 0
+      retry_attempt:
+        description: Retired; ignored.
+        required: false
+        type: number
+        default: 0
+      retry_authorized:
+        description: Retired; ignored.
+        required: false
+        type: boolean
+        default: false
+      base_branch:
+        description: Retired; ignored.
+        required: false
+        type: string
+        default: main
+    secrets:
+      codex_trigger_token:
+        description: Retired; never read.
+        required: false
+
+permissions: {}
+
+jobs:
+  retired:
+    name: Legacy Connector receipt retired
+    # Public repository: keep untrusted jobs off self-hosted runners.
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    permissions: {}
+    steps:
+      - name: Fail closed
+        run: |
+          echo "::error::AI_REVIEW_LEGACY_CONNECTOR_RETIRED: use the local codex-cli-review-receipt.yml mirror through the canonical caller instead."
+          exit 1
