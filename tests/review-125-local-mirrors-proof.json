@@ -1,0 +1,37 @@
+{
+  "admission_after_sha256": "d097a001c9ad8506e2beb027d6eae75dac4ed223a7d3e4fb6ef48eb3e1e1df1d",
+  "admission_before_sha256": "b642d269773161fc897e1141631f3e5528b0351bfc2da6ea71810f7e1fb77aca",
+  "base_blob": "e644dad52ea06cacdf590dcb2a9f6a7264c684e5",
+  "base_sha256": "7bcd295f93714d1d5fc27decdca440836221d784f17720b2da5f0d4348620c98",
+  "composition_source_ref": "f65013fb51034417e94cab31061cc9a821f88931",
+  "mirrors": [
+    {
+      "blob": "fb2d02598911677ee916134e586f2669e0e5a566",
+      "bytes": 218827,
+      "kind": "historical",
+      "patch_sha256": "4f6d2147d87ddd0c107dbc2b40a51533835d2562c0c13c63d641fa857dd8d500",
+      "sha256": "43499b13b9af433890a85b37ac7a7802d006ea2a1917f8070b9332100e20863b",
+      "source_release": "review-2026-10-24.124",
+      "complete_source_fixture": "tests/fixtures/review-125-historical-complete-workflow.yml"
+    },
+    {
+      "blob": "6247f20b7c56979d023a2e93a5649c28a883bd67",
+      "bytes": 218204,
+      "kind": "policy",
+      "patch_sha256": "1099e5e43f5f0005ba3ad226d461d0b01820ef5663bc1a455e0d41190f5240e1",
+      "sha256": "12776dd6788cb839f1f2ba1d3ef107fca13547bd63a2a877c91de2b75b3ad770",
+      "source_release": "review-2026-10-24.125",
+      "complete_source_fixture": "tests/fixtures/review-125-policy-complete-workflow.yml"
+    }
+  ],
+  "policy_digest": "f635db7575c352732fd0303666030cefe246dc4cc97841a19a23fb3c18c63ee5",
+  "protected_base_commit": "99bfb287be8169652d3030e2b9078db9a29dc932",
+  "publication_required_before_remote_write": true,
+  "release_id": "review-2026-10-24.125",
+  "release_sha256": "364d71b034bdfcdce394834361d3c05053b7b85a97045b7ab76be26943ce59f9",
+  "repository": "Schneider-Innovations/amazon-store-outpost-legal",
+  "schema": "review-source-bound-local-admission/v1",
+  "publication_main_commit": "f65013fb51034417e94cab31061cc9a821f88931",
+  "publication_reviewed_head": "bea964cfbf73e5f943a741ba9fc09df4cfb22067",
+  "publication_complete_tree_equal": true
+}
